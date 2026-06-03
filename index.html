@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ziya Mammadov</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;1000&display=swap" rel="stylesheet" />
+  <style>
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+
+:root {
+    --bg: #fff;
+    --text: #111;
+    --muted: #999;
+    --muted2: #555;
+    --border: #e5e5e5;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    min-height: 100vh;
+}
+
+/* ── LAYOUT ── */
+.site {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ── HEADER ── */
+header {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    text-align: center;
+}
+
+.site-name {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.site-updated {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* ── NAV ── */
+nav {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4rem;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    padding: 14px 18px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.theme-btn:hover { color: var(--text); }
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0 0.5rem;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 14px 12px;
+    font-size: 14px;
+    color: var(--muted2);
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* ── TYPOGRAPHY ── */
+.intro-text {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 2rem;
+}
+
+.body-text {
+    font-size: 15px;
+    color: var(--muted2);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+}
+
+.section-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+}
+
+/* ── TEXNİKİ BACARIQLAR (YENİ SƏLİQƏLİ DİZAYN) ── */
+.skills-container {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.skills-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+}
+
+.skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.skills-category {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.skills-category:last-child {
+    border-bottom: none;
+}
+
+.skills-category h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    padding-top: 2px;
+    line-height: 1.5;
+}
+
+.badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-badge {
+    font-size: 13px;
+    color: var(--muted2);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 4px;
+    line-height: 1.4;
+}
+
+/* ── ITEM ROW ── */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.item-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.item-meta {
+    font-size: 13px;
+    color: var(--muted);
+    padding-top: 2px;
+    line-height: 1.5;
+}
+
+.item-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+}
+
+.item-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.item-title a:hover { color: var(--muted2); }
+
+.item-sub {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* ── PROJECT CARDS ── */
+.project-card {
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+}
+
+.project-card:hover { border-color: #444; }
+
+/* ── CONTACT ── */
+.contact-list {
+    list-style: none;
+    margin-bottom: 3rem;
+}
+
+.contact-list li { border-bottom: 1px solid var(--border); }
+
+.contact-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-size: 15px;
+    color: var(--muted2);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-list a:hover { color: var(--text); }
+.contact-list a span:last-child { font-size: 13px; color: var(--muted); }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 3.5rem 0;
+}
+
+/* ── LIGHT/DARK MODE ADAPTASIYASI ── */
+body.light {
+    --bg: #0a0a0a;
+    --text: #e8e8e8;
+    --muted: #666;
+    --muted2: #999;
+    --border: #222;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+    .item-row { grid-template-columns: 80px 1fr; gap: 1rem; }
+    .skills-category { grid-template-columns: 1fr; gap: 0.5rem; padding-bottom: 1rem; }
+    .nav-links li a { padding: 12px 8px; font-size: 13px; }
+    .site-name { font-size: 1.5rem; }
+    .intro-text { font-size: 18px; }
+}
+  </style>
+</head>
+<body>
+<div class="site">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;">
+   
+
+
+
+
+<h1 class="site-name" style="margin:0;">
+   <a style="color:inherit;text-decoration:none;">Ziya Mammadov</a>
+
+</h1>
+
+
+    <span style="font-size:14px;color:var(--muted);">Software Developer</span>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <button class="theme-btn" id="themeBtn" aria-label="tema dəyiş">☾</button>
+      <ul class="nav-links">
+        <li><a href="#home" class="active nav-tab" data-tab="home">Əsas səhifə</a></li>
+        <li><a href="#contact" class="nav-tab" data-tab="contact">Əlaqə</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HOME PAGE -->
+    <section id="home" class="page-section">
+
+
+
+<p class="body-text">
+  Azərbaycan Texniki Universitetinin <strong>Kompüter Elmləri</strong> fakültəsinin məzunuyam və eyni zamanda Code Academy-də <strong>Full Stack Developer</strong> proqramını tamamlamışam. Akademik təhsil və praktiki kurs proqramları ilə kifayətlənməyərək, mühəndislik fəaliyyətimin nəzəri və tətbiqi təməlini müstəqil araşdırma metodologiyaları üzərində qurmuşam. Sənayenin qlobal miqyasda tanınan ekspertlərinin empirik yanaşmalarını mütəmadi analiz edir, qabaqcıl memarlıq (architecture) prinsiplərini öz mühəndislik həllərimdə tətbiq edirəm.
+</p>
+
+<p class="body-text">
+  Hazırda fəaliyyətimi <strong>.NET Core</strong> ekosistemi üzrə ixtisaslaşmış <strong>Backend Developer</strong> olaraq davam etdirirəm. Proqram təminatının hazırlanması həyat dövrünün (SDLC) bütün struktur mərhələlərində aktiv rol alıram. Bura sadəcə proqramlaşdırma deyil, həmçinin sistem analizinin aparılması, müştəri tələblərinin konseptuallaşdırılması və funksional spesifikasiyaların təyini prosesləri daxildir. Layihələrin idarə edilməsində iki həftəlik sprint dövrlərinə əsaslanan <strong>Agile/Scrum</strong> metodologiyasını tətbiq edir, resursların qiymətləndirilməsi (estimation) və proqram təminatının optimallaşdırılmış şəkildə çatdırılması proseslərinə töhfə verirəm.
+</p>
+
+  <p class="body-text">
+    Texniki fəaliyyətimlə yanaşı,  həvəskar <strong> dron pilotluğu </strong>,<strong> üzgüçülük </strong> və <strong> fotoqrafçılıq</strong> ilə məşğulam.
+  </p>
+
+
+      <hr class="section-divider">
+
+      <!-- Müasir və Səliqəli Texniki Bacarıqlar Bölməsi -->
+      <div class="skills-container">
+        <h3 class="skills-title">Texniki Bacarıqlar</h3>
+        
+        <div class="skills-grid">
+          <div class="skills-category">
+            <h4>Dillər & Framework-lər</h4>
+            <div class="badge-group">
+              <span class="skill-badge">C#</span>
+              <span class="skill-badge">.NET Core</span>
+		              <span class="skill-badge">.Net Core MVC</span>
+              <span class="skill-badge">Web API</span>
+              <span class="skill-badge">Express JS</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>Verilənlər Bazası & ORM</h4>
+            <div class="badge-group">
+              <span class="skill-badge">SQL Server</span>
+              <span class="skill-badge">PostgreSQL</span>
+              <span class="skill-badge">Entity Framework Core</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>Memarlıq & Dizayn</h4>
+            <div class="badge-group">
+              <span class="skill-badge">RESTful APIs</span>
+              <span class="skill-badge">Clean Architecture</span>
+              <span class="skill-badge">Microservices</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>Keşləmə & Mesajlaşma</h4>
+            <div class="badge-group">
+              <span class="skill-badge">Redis</span>
+              <span class="skill-badge">RabbitMQ</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>Alətlər & DevOps</h4>
+            <div class="badge-group">
+              <span class="skill-badge">Git</span>
+              <span class="skill-badge">Docker</span>
+              <span class="skill-badge">CI/CD</span>
+            </div>
+          </div>
+
+          <div class="skills-category">
+            <h4>Front-end</h4>
+            <div class="badge-group">
+              <span class="skill-badge">Angular</span>
+            </div>
+          </div>
+
+
+<div class="skills-category">
+            <h4>Metodologiya</h4>
+            <div class="badge-group">
+              <span class="skill-badge">Agile (2-week sprints)</span>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page-section" style="display:none;">
+      <ul class="contact-list" style="margin-top:2.5rem;">
+        <li>
+          <a href="mailto:ziya.memmedov@hotmail.com">
+            <span>E-poçt</span>
+            <span>ziya.memmedov@hotmail.com →</span>
+          </a>
+        </li>
+        <li>
+          <a href="tel:+994504812719">
+            <span>Telefon</span>
+            <span>(050)-481-27-19</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/ZiyaMammadov1" target="_blank">
+            <span>GitHub</span>
+            <span>profil →</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/ziyamammadov1" target="_blank">
+            <span>LinkedIn</span>
+            <span>profil →</span>
+          </a>
+        </li>
+ <li>
+          <a href="https://unsplash.com/@mammadov_1" target="_blank">
+            <span>Unsplash</span>
+            <span>collection →</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+</div>
+
+<script>
+// ── Theme Toggle ──────────────────────────────────────────────
+(function () {
+  var btn = document.getElementById('themeBtn');
+  if (!btn) return;
+  var saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.body.classList.add('light');
+    btn.textContent = '☾';
+  }
+  btn.addEventListener('click', function () {
+    var isLight = document.body.classList.toggle('light');
+    btn.textContent = isLight ? '☀' : '☾';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+})();
+
+// ── SPA Navigation ──────────────────────────────────────────────
+(function () {
+  var tabs = document.querySelectorAll('.nav-tab');
+  var sections = document.querySelectorAll('.page-section');
+
+  function showPage(tab) {
+    sections.forEach(function(s) { s.style.display = 'none'; });
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    var target = document.getElementById(tab);
+    if (target) target.style.display = '';
+    tabs.forEach(function(t) {
+      if (t.dataset.tab === tab) t.classList.add('active');
+    });
+  }
+
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function(e) {
+      e.preventDefault();
+      showPage(t.dataset.tab);
+      history.pushState({tab: t.dataset.tab}, '', '#' + t.dataset.tab);
+    });
+  });
+
+  window.addEventListener('popstate', function(e) {
+    if (e.state && e.state.tab) showPage(e.state.tab);
+  });
+
+  var hash = location.hash.replace('#', '');
+  if (hash) showPage(hash);
+})();
+</script>
+</body>
+</html>
