@@ -32,12 +32,47 @@ body {
     min-height: 100vh;
 }
 
+
+
+
 /* ── LAYOUT ── */
 .site {
     max-width: 680px;
     margin: 0 auto;
     padding: 0 2rem;
 }
+
+/* ── CV YÜKLƏMƏ BÖLMƏSİ (YENİLƏNMİŞ) ── */
+.cv-download-section {
+    text-align: left; /* Mətnin axınına uyğun olaraq sola sadiq qalırıq */
+    margin-bottom: 2rem;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background: var(--border);
+    color: var(--text);
+}
+
+.download-btn .icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
 
 /* ── HEADER ── */
 header {
@@ -334,8 +369,19 @@ body.light {
     Texniki fəaliyyətimlə yanaşı,  həvəskar <strong> dron pilotluğu </strong>,<strong> üzgüçülük </strong> və <strong> fotoqrafçılıq</strong> ilə məşğulam.
   </p>
 
+<div class="cv-download-section">
+    <a href="./Ziya Mammadov.pdf" class="download-btn" download>
+        <span class="icon">↓</span> CV-ni yüklə (PDF)
+    </a>
+</div>
 
-      <hr class="section-divider">
+<hr class="section-divider">
+
+
+
+
+
+
 
       <!-- Müasir və Səliqəli Texniki Bacarıqlar Bölməsi -->
       <div class="skills-container">
