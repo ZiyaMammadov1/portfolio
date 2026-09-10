@@ -898,14 +898,17 @@ nav {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
+    .site { padding: 0 1.1rem; }
     .item-row { grid-template-columns: 80px 1fr; gap: 1rem; }
     .skills-category { grid-template-columns: 1fr; gap: 0.5rem; padding-bottom: 1rem; }
-    .nav-links li a { padding: 12px 8px; font-size: 13px; }
+    .nav-links li a { padding: 10px 6px; font-size: 12.5px; }
     .site-name { font-size: 1.5rem; }
     .avatar { width: 96px; height: 96px; }
     .diploma-item { width: calc(50% - 0.75rem); }
     .diploma-item img { height: 140px; }
     .diploma-modal-content { padding: 0 1rem; }
+    .project-thumbs { width: 100%; }
+    .project-thumb { flex: 1 1 0; width: auto; height: 70px; }
 }
   </style>
 </head>
@@ -1045,16 +1048,16 @@ nav {
       <div class="diploma-section fade-in">
         <h3 class="skills-title">Diplomlar</h3>
         <div class="diploma-grid">
-          <div class="diploma-item" data-name="Microsoft Certified: Azure Fundamentals (AZ-900)" data-img="https://media.licdn.com/dms/image/v2/D4D2DAQGwxcbM3a62Pw/profile-treasury-image-shrink_1280_1280/B4DZ.nTausJ4AY-/0/1785218313530?e=1789660800&v=beta&t=17zz6pWc6a8r4ygrPbigFjeaXlBrN9pSzzil99BA99Q">
-            <img src="https://media.licdn.com/dms/image/v2/D4D2DAQGwxcbM3a62Pw/profile-treasury-image-shrink_1280_1280/B4DZ.nTausJ4AY-/0/1785218313530?e=1789660800&v=beta&t=17zz6pWc6a8r4ygrPbigFjeaXlBrN9pSzzil99BA99Q" alt="Microsoft Certified: Azure Fundamentals (AZ-900)" loading="lazy">
+          <div class="diploma-item" data-name="Microsoft Certified: Azure Fundamentals (AZ-900)" data-img="./diplomas/az-900.jpg">
+            <img src="./diplomas/az-900.jpg" alt="Microsoft Certified: Azure Fundamentals (AZ-900)" loading="lazy">
             <p class="diploma-name">Microsoft AZ-900</p>
           </div>
-          <div class="diploma-item" data-name="Pilotsuz Uçuş Aparatı Sertifikatı" data-img="https://media.licdn.com/dms/image/v2/D4D2DAQFIEdlztEUShA/profile-treasury-image-shrink_8192_8192/B4DZ9AotKkJQAQ-/0/1783495840800?e=1789660800&v=beta&t=H2hlNl92qs7ej_1tcc0ReQ60qmvkxgv2Fd6nhITjgOE">
-            <img src="https://media.licdn.com/dms/image/v2/D4D2DAQFIEdlztEUShA/profile-treasury-image-shrink_8192_8192/B4DZ9AotKkJQAQ-/0/1783495840800?e=1789660800&v=beta&t=H2hlNl92qs7ej_1tcc0ReQ60qmvkxgv2Fd6nhITjgOE" alt="Pilotsuz Uçuş Aparatı Sertifikatı" loading="lazy">
+          <div class="diploma-item" data-name="Pilotsuz Uçuş Aparatı Sertifikatı" data-img="./diplomas/drone-pilot.jpg">
+            <img src="./diplomas/drone-pilot.jpg" alt="Pilotsuz Uçuş Aparatı Sertifikatı" loading="lazy">
             <p class="diploma-name">Pilotsuz Uçuş Aparatı</p>
           </div>
-          <div class="diploma-item" data-name="Code Academy — Full Stack Developer Sertifikatı" data-img="https://media.licdn.com/dms/image/v2/C4E2DAQGWt7rtP9gmOA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1652551249178?e=1789660800&v=beta&t=p-leIdUZPRpWh1tQTH7VLFPsrW19Tg2DuBoTPGPd0Iw">
-            <img src="https://media.licdn.com/dms/image/v2/C4E2DAQGWt7rtP9gmOA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1652551249178?e=1789660800&v=beta&t=p-leIdUZPRpWh1tQTH7VLFPsrW19Tg2DuBoTPGPd0Iw" alt="Code Academy — Full Stack Developer Sertifikatı" loading="lazy">
+          <div class="diploma-item" data-name="Code Academy — Full Stack Developer Sertifikatı" data-img="./diplomas/code-academy.jpg">
+            <img src="./diplomas/code-academy.jpg" alt="Code Academy — Full Stack Developer Sertifikatı" loading="lazy">
             <p class="diploma-name">Code Academy</p>
           </div>
         </div>
