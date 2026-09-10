@@ -14,11 +14,11 @@
 }
 
 :root {
-    --bg: #fff;
-    --text: #111;
-    --muted: #999;
-    --muted2: #555;
-    --border: #e5e5e5;
+    --bg: #f7f2e7;
+    --text: #2a2620;
+    --muted: #a39a86;
+    --muted2: #6b6250;
+    --border: #e8e0cf;
 }
 
 html { scroll-behavior: smooth; }
@@ -37,14 +37,13 @@ body {
 
 /* ── LAYOUT ── */
 .site {
-    max-width: 680px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 2.5rem;
 }
 
 /* ── CV YÜKLƏMƏ BÖLMƏSİ (YENİLƏNMİŞ) ── */
 .cv-download-section {
-    text-align: left; /* Mətnin axınına uyğun olaraq sola sadiq qalırıq */
     margin-bottom: 2rem;
 }
 
@@ -61,23 +60,31 @@ body {
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .download-btn:hover {
     background: var(--border);
     color: var(--text);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .download-btn .icon {
     font-size: 16px;
     line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.download-btn:hover .icon {
+    transform: translateY(2px);
 }
 
 
 /* ── HEADER ── */
 header {
-    padding-top: 5rem;
-    padding-bottom: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
     text-align: center;
 }
 
@@ -97,26 +104,13 @@ header {
 /* ── NAV ── */
 nav {
     border-bottom: 1px solid var(--border);
-    margin-bottom: 4rem;
+    margin-bottom: 2.25rem;
 }
 
 .nav-inner {
     display: flex;
     align-items: center;
 }
-
-.theme-btn {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 20px;
-    padding: 14px 18px;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.2s;
-}
-
-.theme-btn:hover { color: var(--text); }
 
 .nav-links {
     display: flex;
@@ -127,7 +121,7 @@ nav {
 
 .nav-links li a {
     display: block;
-    padding: 14px 12px;
+    padding: 14px 8px;
     font-size: 14px;
     color: var(--muted2);
     text-decoration: none;
@@ -141,15 +135,13 @@ nav {
     font-weight: 500;
 }
 
-/* ── TYPOGRAPHY ── */
-.intro-text {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.6;
-    color: var(--text);
-    margin-bottom: 2rem;
+.nav-links li a:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--border);
+    border-radius: 4px;
 }
 
+/* ── TYPOGRAPHY ── */
 .body-text {
     font-size: 15px;
     color: var(--muted2);
@@ -171,11 +163,126 @@ nav {
     margin-bottom: 2rem;
 }
 
+/* ── DIPLOMAS ── */
+.diploma-section {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.diploma-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.diploma-item {
+    width: 130px;
+    cursor: pointer;
+    perspective: 600px;
+}
+
+.diploma-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: block;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transform-style: preserve-3d;
+}
+
+.diploma-item:hover img {
+    transform: rotateY(10deg) rotateX(5deg) scale(1.04);
+    box-shadow: 8px 12px 24px rgba(0, 0, 0, 0.18);
+}
+
+.diploma-name {
+    margin-top: 0.6rem;
+    font-size: 13px;
+    color: var(--muted2);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* ── DIPLOMA MODAL ── */
+.diploma-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+}
+
+.diploma-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.diploma-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 18, 15, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.diploma-modal-content {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.diploma-modal-content img {
+    max-width: 100%;
+    max-height: 72vh;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    transform: scale(0.96);
+    transition: transform 0.25s ease;
+}
+
+.diploma-modal.active .diploma-modal-content img {
+    transform: scale(1);
+}
+
+.diploma-modal-caption {
+    margin-top: 1.25rem;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
 .skills-title {
     font-size: 17px;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 14px;
+}
+
+.skills-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    bottom: 3px;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--text);
+    opacity: 0.35;
 }
 
 .skills-grid {
@@ -219,6 +326,18 @@ nav {
     padding: 3px 10px;
     border-radius: 4px;
     line-height: 1.4;
+    display: inline-block;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.15s ease;
+}
+
+.skill-badge:hover {
+    color: var(--text);
+    border-color: var(--muted2);
+    transform: translateY(-2px);
+}
+
+.skills-category {
+    transition: border-color 0.2s, background-color 0.2s;
 }
 
 /* ── ITEM ROW ── */
@@ -267,12 +386,137 @@ nav {
 /* ── PROJECT CARDS ── */
 .project-card {
     border: 1px solid var(--border);
+    border-radius: 8px;
     padding: 1.75rem;
     margin-bottom: 1rem;
     transition: border-color 0.2s;
 }
 
+.project-card .item-title { font-size: 17px; margin-bottom: 0.5rem; }
+.project-card .badge-group { margin-bottom: 1.25rem; }
+
+.project-thumbs {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.project-thumb {
+    width: 84px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    overflow: hidden;
+}
+
+.project-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-thumb svg {
+    width: 20px;
+    height: 20px;
+}
+
 .project-card:hover { border-color: #444; }
+
+.project-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card-link:hover .item-title { color: var(--muted2); }
+
+/* ── BLOG CARDS ── */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 150px;
+    grid-auto-flow: dense;
+    gap: 3px;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.blog-page {
+    display: contents;
+}
+
+.blog-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.blog-card--lg {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.blog-card-media {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--border), var(--bg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+}
+
+.blog-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.blog-card-media svg {
+    width: 28px;
+    height: 28px;
+}
+
+.blog-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 60%);
+}
+
+.blog-card-title {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.blog-card:hover .blog-card-media img { transform: scale(1.05); }
+
+.blog-card--lg .blog-card-title {
+    font-size: 17px;
+    -webkit-line-clamp: 4;
+}
+
+@media (max-width: 600px) {
+    .blog-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
+}
 
 /* ── CONTACT ── */
 .contact-list {
@@ -294,7 +538,49 @@ nav {
 }
 
 .contact-list a:hover { color: var(--text); }
-.contact-list a span:last-child { font-size: 13px; color: var(--muted); }
+
+.contact-left {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.contact-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted2);
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.contact-list a:hover .contact-icon {
+    border-color: var(--text);
+    color: var(--text);
+}
+
+.contact-value {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.contact-value .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.contact-list a:hover .arrow {
+    transform: translateX(4px);
+}
 
 /* ── SECTION DIVIDER ── */
 .section-divider {
@@ -304,13 +590,310 @@ nav {
     margin: 3.5rem 0;
 }
 
-/* ── LIGHT/DARK MODE ADAPTASIYASI ── */
-body.light {
-    --bg: #0a0a0a;
-    --text: #e8e8e8;
-    --muted: #666;
-    --muted2: #999;
-    --border: #222;
+/* ── AVATAR ── */
+.avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--border);
+}
+
+.avatar-fallback {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    background: var(--text);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.role-text {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 0.35rem;
+}
+
+/* ── PHOTOGRAPHY GRID ── */
+.photo-source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.photo-source-link:hover {
+    color: var(--muted2);
+}
+
+.photo-source-link .link-text {
+    position: relative;
+    display: inline-block;
+}
+
+.photo-source-link .link-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.photo-source-link:hover .link-text::after {
+    transform: scaleX(1);
+}
+
+.photo-source-link .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.photo-source-link:hover .arrow {
+    transform: translateX(3px);
+}
+
+.photo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.photo-page {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.photo-pagination,
+.blog-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+.page-btn,
+.blog-page-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted2);
+    font-size: 13px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.page-btn:hover,
+.blog-page-btn:hover {
+    border-color: var(--muted2);
+    color: var(--text);
+}
+
+.page-btn.active,
+.blog-page-btn.active {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.photo-row {
+    display: flex;
+    gap: 3px;
+    height: 180px;
+}
+
+.photo-row--tall {
+    height: 260px;
+}
+
+.photo-tile {
+    position: relative;
+    flex: 1 1 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--border), var(--bg));
+    display: block;
+}
+
+.photo-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.photo-tile:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .photo-row { height: 110px; }
+    .photo-row--tall { height: 160px; }
+}
+
+/* ── BACK BUTTON ── */
+.back-btn {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 30;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 8px 16px 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.back-btn:hover {
+    border-color: var(--muted2);
+    transform: translateX(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.back-btn-arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.back-btn:hover .back-btn-arrow {
+    transform: translateX(-2px);
+}
+
+/* ── BLOG POST ── */
+.post-wrap {
+    max-width: 620px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+}
+
+.post-eyebrow {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+.post-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+.post-byline {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+}
+
+.post-hero {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+.post-hero img {
+    width: 100%;
+    display: block;
+}
+
+.post-subheading {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-quote {
+    border-left: 3px solid var(--text);
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+.post-quote cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 14px;
+    font-style: normal;
+    color: var(--muted);
+}
+
+.post-image {
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.post-image img {
+    width: 100%;
+    display: block;
+}
+
+.post-image figcaption {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 600px) {
+    .back-btn { top: 1rem; left: 1rem; padding: 7px 14px 7px 10px; }
+    .post-title { font-size: 1.5rem; }
+}
+
+/* ── SCROLL FADE-IN ── */
+.fade-in {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ── RESPONSIVE ── */
@@ -319,33 +902,38 @@ body.light {
     .skills-category { grid-template-columns: 1fr; gap: 0.5rem; padding-bottom: 1rem; }
     .nav-links li a { padding: 12px 8px; font-size: 13px; }
     .site-name { font-size: 1.5rem; }
-    .intro-text { font-size: 18px; }
+    .avatar { width: 96px; height: 96px; }
+    .diploma-item { width: calc(50% - 0.75rem); }
+    .diploma-item img { height: 140px; }
+    .diploma-modal-content { padding: 0 1rem; }
 }
   </style>
 </head>
 <body>
 <div class="site">
 
-  <header style="display:flex;align-items:center;justify-content:space-between;">
-   
+  <a href="#blogs" class="back-btn nav-tab" data-tab="blogs" style="display:none;">
+    <span class="back-btn-arrow">←</span> Geri
+  </a>
 
-
-
-
+  <header style="text-align:center;">
+    <img src="./avatar.png" class="avatar" alt="Ziya Mammadov">
 <h1 class="site-name" style="margin:0;">
    <a style="color:inherit;text-decoration:none;">Ziya Mammadov</a>
 
 </h1>
 
 
-    <span style="font-size:14px;color:var(--muted);">Software Developer</span>
+    <span class="role-text">Software Developer</span>
   </header>
 
   <nav>
     <div class="nav-inner">
-      <button class="theme-btn" id="themeBtn" aria-label="tema dəyiş">☾</button>
       <ul class="nav-links">
-        <li><a href="#home" class="active nav-tab" data-tab="home">Əsas səhifə</a></li>
+        <li><a href="#home" class="active nav-tab" data-tab="home">Haqqımda</a></li>
+        <li><a href="#projects" class="nav-tab" data-tab="projects">Portfolio</a></li>
+        <li><a href="#blogs" class="nav-tab" data-tab="blogs">Bloglar</a></li>
+        <li><a href="#photography" class="nav-tab" data-tab="photography">Fotoqrafiya</a></li>
         <li><a href="#contact" class="nav-tab" data-tab="contact">Əlaqə</a></li>
       </ul>
     </div>
@@ -357,15 +945,15 @@ body.light {
 
 
 
-<p class="body-text">
+<p class="body-text fade-in">
   Azərbaycan Texniki Universitetinin <strong>Kompüter Elmləri</strong> fakültəsinin məzunuyam və eyni zamanda Code Academy-də <strong>Full Stack Developer</strong> proqramını tamamlamışam. Akademik təhsil və praktiki kurs proqramları ilə kifayətlənməyərək, mühəndislik fəaliyyətimin nəzəri və tətbiqi təməlini müstəqil araşdırma metodologiyaları üzərində qurmuşam. Sənayenin qlobal miqyasda tanınan ekspertlərinin empirik yanaşmalarını mütəmadi analiz edir, qabaqcıl memarlıq (architecture) prinsiplərini öz mühəndislik həllərimdə tətbiq edirəm.
 </p>
 
-<p class="body-text">
+<p class="body-text fade-in">
   Hazırda fəaliyyətimi <strong>.NET Core</strong> ekosistemi üzrə ixtisaslaşmış <strong>Backend Developer</strong> olaraq davam etdirirəm. Proqram təminatının hazırlanması həyat dövrünün (SDLC) bütün struktur mərhələlərində aktiv rol alıram. Bura sadəcə proqramlaşdırma deyil, həmçinin sistem analizinin aparılması, müştəri tələblərinin konseptuallaşdırılması və funksional spesifikasiyaların təyini prosesləri daxildir. Layihələrin idarə edilməsində iki həftəlik sprint dövrlərinə əsaslanan <strong>Agile/Scrum</strong> metodologiyasını tətbiq edir, resursların qiymətləndirilməsi (estimation) və proqram təminatının optimallaşdırılmış şəkildə çatdırılması proseslərinə töhfə verirəm.
 </p>
 
-  <p class="body-text">
+  <p class="body-text fade-in">
     Texniki fəaliyyətimlə yanaşı,  həvəskar <strong> dron pilotluğu </strong>,<strong> üzgüçülük </strong> və <strong> fotoqrafçılıq</strong> ilə məşğulam.
   </p>
 
@@ -384,7 +972,7 @@ body.light {
 
 
       <!-- Müasir və Səliqəli Texniki Bacarıqlar Bölməsi -->
-      <div class="skills-container">
+      <div class="skills-container fade-in">
         <h3 class="skills-title">Texniki Bacarıqlar</h3>
         
         <div class="skills-grid">
@@ -453,39 +1041,319 @@ body.light {
 
         </div>
       </div>
+
+      <div class="diploma-section fade-in">
+        <h3 class="skills-title">Diplomlar</h3>
+        <div class="diploma-grid">
+          <div class="diploma-item" data-name="Microsoft Certified: Azure Fundamentals (AZ-900)" data-img="https://media.licdn.com/dms/image/v2/D4D2DAQGwxcbM3a62Pw/profile-treasury-image-shrink_1280_1280/B4DZ.nTausJ4AY-/0/1785218313530?e=1789660800&v=beta&t=17zz6pWc6a8r4ygrPbigFjeaXlBrN9pSzzil99BA99Q">
+            <img src="https://media.licdn.com/dms/image/v2/D4D2DAQGwxcbM3a62Pw/profile-treasury-image-shrink_1280_1280/B4DZ.nTausJ4AY-/0/1785218313530?e=1789660800&v=beta&t=17zz6pWc6a8r4ygrPbigFjeaXlBrN9pSzzil99BA99Q" alt="Microsoft Certified: Azure Fundamentals (AZ-900)" loading="lazy">
+            <p class="diploma-name">Microsoft AZ-900</p>
+          </div>
+          <div class="diploma-item" data-name="Pilotsuz Uçuş Aparatı Sertifikatı" data-img="https://media.licdn.com/dms/image/v2/D4D2DAQFIEdlztEUShA/profile-treasury-image-shrink_8192_8192/B4DZ9AotKkJQAQ-/0/1783495840800?e=1789660800&v=beta&t=H2hlNl92qs7ej_1tcc0ReQ60qmvkxgv2Fd6nhITjgOE">
+            <img src="https://media.licdn.com/dms/image/v2/D4D2DAQFIEdlztEUShA/profile-treasury-image-shrink_8192_8192/B4DZ9AotKkJQAQ-/0/1783495840800?e=1789660800&v=beta&t=H2hlNl92qs7ej_1tcc0ReQ60qmvkxgv2Fd6nhITjgOE" alt="Pilotsuz Uçuş Aparatı Sertifikatı" loading="lazy">
+            <p class="diploma-name">Pilotsuz Uçuş Aparatı</p>
+          </div>
+          <div class="diploma-item" data-name="Code Academy — Full Stack Developer Sertifikatı" data-img="https://media.licdn.com/dms/image/v2/C4E2DAQGWt7rtP9gmOA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1652551249178?e=1789660800&v=beta&t=p-leIdUZPRpWh1tQTH7VLFPsrW19Tg2DuBoTPGPd0Iw">
+            <img src="https://media.licdn.com/dms/image/v2/C4E2DAQGWt7rtP9gmOA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1652551249178?e=1789660800&v=beta&t=p-leIdUZPRpWh1tQTH7VLFPsrW19Tg2DuBoTPGPd0Iw" alt="Code Academy — Full Stack Developer Sertifikatı" loading="lazy">
+            <p class="diploma-name">Code Academy</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS PAGE -->
+    <section id="projects" class="page-section" style="display:none;">
+      <div class="project-card fade-in">
+        <a href="#project-1" class="nav-tab project-card-link" data-tab="project-1">
+          <h3 class="item-title">Layihə Adı</h3>
+          <!-- Real ekran görüntüsü olanda <div class="project-thumb"><img src="..." alt=""></div> əvəz edin -->
+          <div class="project-thumbs">
+            <div class="project-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5.5-5.5a1 1 0 0 0-1.4 0L5 19"/></svg>
+            </div>
+            <div class="project-thumb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5.5-5.5a1 1 0 0 0-1.4 0L5 19"/></svg>
+            </div>
+          </div>
+        </a>
+        <p class="body-text" style="margin-bottom:1rem;">
+          Layihənin qısa təsviri buraya yazılacaq — həll etdiyi problem, əsas xüsusiyyətlər və texniki yanaşma haqqında bir neçə cümlə.
+        </p>
+        <div class="badge-group">
+          <span class="skill-badge">.NET Core</span>
+          <span class="skill-badge">PostgreSQL</span>
+          <span class="skill-badge">Docker</span>
+        </div>
+        <a href="https://github.com/ZiyaMammadov1" target="_blank" class="download-btn">
+          <span class="icon">↗</span> GitHub-da bax
+        </a>
+      </div>
+    </section>
+
+    <!-- PROJECT DETAIL 1 (sadə: şəkil + yazı) -->
+    <section id="project-1" class="page-section" style="display:none;">
+      <div class="post-wrap fade-in">
+        <div class="post-hero">
+          <div class="project-thumb" style="width:100%; height:280px; border-radius:0;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:40px;height:40px;"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5.5-5.5a1 1 0 0 0-1.4 0L5 19"/></svg>
+          </div>
+        </div>
+        <h1 class="post-title">Layihə Adı</h1>
+        <p class="body-text">
+          Layihənin tam təsviri buraya yazılacaq — həll etdiyi problem, əsas xüsusiyyətlər, texniki yanaşma və nəticələr haqqında ətraflı məlumat.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOGS PAGE -->
+    <section id="blogs" class="page-section" style="display:none;">
+      <div class="blog-grid fade-in">
+        <div class="blog-page" data-blog-page="1">
+          <a href="#post-1" class="blog-card blog-card--lg nav-tab" data-tab="post-1" data-tag="Səyahət">
+            <div class="blog-card-media">
+              <img src="https://granitas.az/wp-content/uploads/2021/02/laplandiya.jpg" alt="" loading="lazy">
+            </div>
+            <div class="blog-card-overlay">
+              <h3 class="blog-card-title">Finlandiyanın ən şimal hissəsi olan Laplandiya, müxtəlif rəng çalarları ilə dolu sehrli arktik bölgə</h3>
+            </div>
+          </a>
+          <a href="#post-2" class="blog-card nav-tab" data-tab="post-2" data-tag="Maraqlı">
+            <div class="blog-card-media">
+              <img src="https://cdn.pixabay.com/photo/2023/09/11/15/54/ai-generated-8247155_1280.jpg" alt="" loading="lazy">
+            </div>
+            <div class="blog-card-overlay">
+              <h3 class="blog-card-title">The Creation of Yoda's Lightsaber</h3>
+            </div>
+          </a>
+          <a href="#post-3" class="blog-card nav-tab" data-tab="post-3" data-tag="Yumor">
+            <div class="blog-card-media">
+              <img src="https://images.unsplash.com/photo-1780519682021-745dd2d59584?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </div>
+            <div class="blog-card-overlay">
+              <h3 class="blog-card-title">How I Convinced NASA the Moon Is Made of Cheese</h3>
+            </div>
+          </a>
+          <a href="#post-4" class="blog-card nav-tab" data-tab="post-4" data-tag="Təbiət">
+            <div class="blog-card-media">
+              <img src="https://images.unsplash.com/photo-1780519662401-23f3922dfb79?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </div>
+            <div class="blog-card-overlay">
+              <h3 class="blog-card-title">Why Trees Judge You When You're Not Looking</h3>
+            </div>
+          </a>
+          <a href="#post-5" class="blog-card nav-tab" data-tab="post-5" data-tag="Sirr">
+            <div class="blog-card-media">
+              <img src="https://images.unsplash.com/photo-1780519669591-1fee2d735b30?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </div>
+            <div class="blog-card-overlay">
+              <h3 class="blog-card-title">The Secret Underground Elevator to Atlantis</h3>
+            </div>
+          </a>
+        </div>
+        <!-- 10-cu yazıdan sonra buraya <div class="blog-page" data-blog-page="2" style="display:none;">...</div> əlavə edin, pagination avtomatik görünəcək -->
+      </div>
+      <div class="blog-pagination">
+        <button type="button" class="blog-page-btn active" data-page-num="1">1</button>
+      </div>
+    </section>
+
+    <!-- BLOG POST 1 -->
+    <section id="post-1" class="page-section" style="display:none;">
+      <div class="post-wrap fade-in">
+        <p class="post-eyebrow">Səyahət</p>
+        <h1 class="post-title">Finlandiyanın ən şimal hissəsi olan Laplandiya, müxtəlif rəng çalarları ilə dolu sehrli arktik bölgə</h1>
+        <p class="post-byline">Ziya Mammadov · 26 Sentyabr 2025</p>
+        <div class="post-hero">
+          <img src="https://granitas.az/wp-content/uploads/2021/02/laplandiya.jpg" alt="">
+        </div>
+        <p class="body-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
+        </p>
+        <p class="body-text">
+          Nunc faucibus ex eros, ac ultricies tellus interdum quis. Nulla facilisi. Aliquam convallis risus ut metus fermentum iuctorlis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        </p>
+        <h2 class="post-subheading">Rəng çalarları</h2>
+        <p class="body-text">
+          Etiam fringilla finibus sagittis. In pulvinar commodo magna, ac auctor massa efficitur nec. Quisque tristique scelerisfacilisis. Phasellus id ligula sed urna maximus elementum id tellus.
+        </p>
+        <blockquote class="post-quote">
+          "Necə qərar vermək lazımdır — nə olduğuna yox, kim olduğuna baxaraq."
+          <cite>— Laplandiya sakinləri</cite>
+        </blockquote>
+        <p class="body-text">
+          Mauris fringilla, metus sit amet ultrices fringilla, elit mi tempor dui, sit amet scelerisque metus quam nec diam. Stempus turpis. Sed ac placerat risus. Vestibulum vitae pretium libero.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOG POST 2 -->
+    <section id="post-2" class="page-section" style="display:none;">
+      <div class="post-wrap fade-in">
+        <p class="post-eyebrow">Maraqlı</p>
+        <h1 class="post-title">The Creation of Yoda's Lightsaber</h1>
+        <p class="post-byline">Ziya Mammadov · 12 Avqust 2025</p>
+        <div class="post-hero">
+          <img src="https://cdn.pixabay.com/photo/2023/09/11/15/54/ai-generated-8247155_1280.jpg" alt="">
+        </div>
+        <p class="body-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
+        </p>
+        <!-- Video əlavə etmək üçün: <div class="post-image"><video src="..." controls></video></div> -->
+        <p class="body-text">
+          Nunc faucibus ex eros, ac ultricies tellus interdum quis. Nulla facilisi. Aliquam convallis risus ut metus fermentum iuctorlis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOG POST 3 (hero şəkli yoxdur — nümunə) -->
+    <section id="post-3" class="page-section" style="display:none;">
+      <div class="post-wrap fade-in">
+        <p class="post-eyebrow">Yumor</p>
+        <h1 class="post-title">How I Convinced NASA the Moon Is Made of Cheese</h1>
+        <p class="post-byline">Ziya Mammadov · 3 İyul 2025</p>
+        <p class="body-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
+        </p>
+        <figure class="post-image">
+          <img src="https://images.unsplash.com/photo-1780519682021-745dd2d59584?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+          <figcaption>Sübut №1</figcaption>
+        </figure>
+        <p class="body-text">
+          Etiam fringilla finibus sagittis. In pulvinar commodo magna, ac auctor massa efficitur nec. Quisque tristique scelerisfacilisis. Phasellus id ligula sed urna maximus elementum id tellus.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOG POST 4 -->
+    <section id="post-4" class="page-section" style="display:none;">
+      <div class="post-wrap fade-in">
+        <p class="post-eyebrow">Təbiət</p>
+        <h1 class="post-title">Why Trees Judge You When You're Not Looking</h1>
+        <p class="post-byline">Ziya Mammadov · 19 May 2025</p>
+        <div class="post-hero">
+          <img src="https://images.unsplash.com/photo-1780519662401-23f3922dfb79?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+        <p class="body-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
+        </p>
+        <blockquote class="post-quote">
+          "Ağaclar heç vaxt tələsmir, amma hər şeyi görür."
+        </blockquote>
+        <p class="body-text">
+          Nunc faucibus ex eros, ac ultricies tellus interdum quis. Nulla facilisi. Aliquam convallis risus ut metus fermentum iuctorlis natoque penatibus et magnis dis parturient montes.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOG POST 5 -->
+    <section id="post-5" class="page-section" style="display:none;">
+      <div class="post-wrap fade-in">
+        <p class="post-eyebrow">Sirr</p>
+        <h1 class="post-title">The Secret Underground Elevator to Atlantis</h1>
+        <p class="post-byline">Ziya Mammadov · 8 Mart 2025</p>
+        <div class="post-hero">
+          <img src="https://images.unsplash.com/photo-1780519669591-1fee2d735b30?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+        <p class="body-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
+        </p>
+        <h2 class="post-subheading">Kəşf</h2>
+        <figure class="post-image">
+          <img src="https://images.unsplash.com/photo-1783388798628-32e491b3f106?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </figure>
+        <p class="body-text">
+          Etiam fringilla finibus sagittis. In pulvinar commodo magna, ac auctor massa efficitur nec. Quisque tristique scelerisfacilisis. Phasellus id ligula sed urna maximus elementum id tellus.
+        </p>
+      </div>
+    </section>
+
+    <!-- PHOTOGRAPHY PAGE -->
+    <section id="photography" class="page-section" style="display:none;">
+      <div class="photo-grid fade-in">
+        <div class="photo-page" data-photo-page="1">
+          <div class="photo-row">
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1780519669591-1fee2d735b30?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1.6;">
+              <img src="https://images.unsplash.com/photo-1780519669591-1fee2d735b30?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1783388798628-32e491b3f106?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1;">
+              <img src="https://images.unsplash.com/photo-1783388798628-32e491b3f106?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+          </div>
+          <div class="photo-row">
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1780519684663-7fc2b668bd94?q=80&w=1442&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1;">
+              <img src="https://images.unsplash.com/photo-1780519684663-7fc2b668bd94?q=80&w=1442&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1783388798619-e64b2495b58f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1.3;">
+              <img src="https://images.unsplash.com/photo-1783388798619-e64b2495b58f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1783388798620-cc0e7443d2e0?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:0.9;">
+              <img src="https://images.unsplash.com/photo-1783388798620-cc0e7443d2e0?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+          </div>
+          <div class="photo-row photo-row--tall">
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1780519682021-745dd2d59584?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1;">
+              <img src="https://images.unsplash.com/photo-1780519682021-745dd2d59584?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+          </div>
+          <div class="photo-row">
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1780519653645-33b984561e4c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1;">
+              <img src="https://images.unsplash.com/photo-1780519653645-33b984561e4c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1780519677327-fa71265c7521?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1.2;">
+              <img src="https://images.unsplash.com/photo-1780519677327-fa71265c7521?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+            <a class="photo-tile" href="https://images.unsplash.com/photo-1780519662401-23f3922dfb79?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" target="_blank" style="flex-grow:1.4;">
+              <img src="https://images.unsplash.com/photo-1780519662401-23f3922dfb79?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
+            </a>
+          </div>
+        </div>
+        <!-- 10-cu şəkildən sonra buraya <div class="photo-page" data-photo-page="2" style="display:none;">...</div> əlavə edin və pagination-a 2-ci düyməni qaytarın (aşağıda nümunə var, hazırda gizlədilib) -->
+      </div>
+      <a href="https://unsplash.com/@mammadov_1" target="_blank" class="photo-source-link fade-in">
+        <span class="link-text">Orijinal ölçüdə Unsplash-da</span> <span class="arrow">→</span>
+      </a>
+      <div class="photo-pagination">
+        <button type="button" class="page-btn active" data-page-num="1">1</button>
+      </div>
     </section>
 
     <!-- CONTACT PAGE -->
     <section id="contact" class="page-section" style="display:none;">
-      <ul class="contact-list" style="margin-top:2.5rem;">
+      <ul class="contact-list fade-in">
         <li>
-          <a href="mailto:ziya.memmedov@hotmail.com">
-            <span>E-poçt</span>
-            <span>ziya.memmedov@hotmail.com →</span>
+          <a href="mailto:ziya.memmedov@hotmail.com" title="ziya.memmedov@hotmail.com">
+            <span class="contact-left">
+              <span class="contact-icon">✉</span>
+              <span>E-poçt</span>
+            </span>
+            <span class="contact-value">Yaz<span class="arrow">→</span></span>
           </a>
         </li>
         <li>
-          <a href="tel:+994504812719">
-            <span>Telefon</span>
-            <span>(050)-481-27-19</span>
+          <a href="tel:+994504812719" title="(050)-481-27-19">
+            <span class="contact-left">
+              <span class="contact-icon">☎</span>
+              <span>Telefon</span>
+            </span>
+            <span class="contact-value">Zəng et<span class="arrow">→</span></span>
           </a>
         </li>
         <li>
           <a href="https://github.com/ZiyaMammadov1" target="_blank">
-            <span>GitHub</span>
-            <span>profil →</span>
+            <span class="contact-left">
+              <span class="contact-icon">G</span>
+              <span>GitHub</span>
+            </span>
+            <span class="contact-value">Profilə bax<span class="arrow">→</span></span>
           </a>
         </li>
         <li>
           <a href="https://www.linkedin.com/in/ziyamammadov1" target="_blank">
-            <span>LinkedIn</span>
-            <span>profil →</span>
-          </a>
-        </li>
- <li>
-          <a href="https://unsplash.com/@mammadov_1" target="_blank">
-            <span>Unsplash</span>
-            <span>collection →</span>
+            <span class="contact-left">
+              <span class="contact-icon">in</span>
+              <span>LinkedIn</span>
+            </span>
+            <span class="contact-value">Profilə bax<span class="arrow">→</span></span>
           </a>
         </li>
       </ul>
@@ -494,20 +1362,126 @@ body.light {
 
 </div>
 
+<div class="diploma-modal" id="diplomaModal">
+  <div class="diploma-modal-backdrop" id="diplomaModalBackdrop"></div>
+  <div class="diploma-modal-content">
+    <img src="" alt="" id="diplomaModalImg">
+    <p class="diploma-modal-caption" id="diplomaModalCaption"></p>
+  </div>
+</div>
+
 <script>
-// ── Theme Toggle ──────────────────────────────────────────────
+// ── Scroll Fade-in ──────────────────────────────────────────────
 (function () {
-  var btn = document.getElementById('themeBtn');
-  if (!btn) return;
-  var saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.body.classList.add('light');
-    btn.textContent = '☾';
+  var els = document.querySelectorAll('.fade-in');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('visible'); });
+    return;
   }
-  btn.addEventListener('click', function () {
-    var isLight = document.body.classList.toggle('light');
-    btn.textContent = isLight ? '☀' : '☾';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function (el) { observer.observe(el); });
+})();
+
+// ── Photo Pagination ──────────────────────────────────────────────
+(function () {
+  var buttons = document.querySelectorAll('.page-btn');
+  var pages = document.querySelectorAll('.photo-page');
+  var grid = document.querySelector('.photo-grid');
+  var pagination = document.querySelector('.photo-pagination');
+  if (!buttons.length || !grid) return;
+
+  // Tək səhifə varsa pagination-u gizlədirik (10+ şəkil olanda avtomatik görünəcək)
+  if (pagination) pagination.style.display = pages.length > 1 ? '' : 'none';
+
+  // Bütün səhifələrin hündürlüyünü ölçüb konteynerə tətbiq edirik ki,
+  // qısa səhifəyə keçəndə ümumi hündürlük sıçramasın.
+  function syncMinHeight() {
+    var maxH = 0;
+    pages.forEach(function (p) {
+      var wasHidden = p.style.display === 'none';
+      if (wasHidden) {
+        p.style.visibility = 'hidden';
+        p.style.position = 'absolute';
+        p.style.display = 'flex';
+      }
+      maxH = Math.max(maxH, p.offsetHeight);
+      if (wasHidden) {
+        p.style.display = 'none';
+        p.style.visibility = '';
+        p.style.position = '';
+      }
+    });
+    grid.style.minHeight = maxH + 'px';
+  }
+
+  syncMinHeight();
+  window.addEventListener('resize', syncMinHeight);
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var num = btn.dataset.pageNum;
+      pages.forEach(function (p) { p.style.display = p.dataset.photoPage === num ? '' : 'none'; });
+      buttons.forEach(function (b) { b.classList.toggle('active', b === btn); });
+    });
+  });
+})();
+
+// ── Diploma Modal ──────────────────────────────────────────────
+(function () {
+  var modal = document.getElementById('diplomaModal');
+  var backdrop = document.getElementById('diplomaModalBackdrop');
+  var modalImg = document.getElementById('diplomaModalImg');
+  var modalCaption = document.getElementById('diplomaModalCaption');
+  var items = document.querySelectorAll('.diploma-item');
+  if (!modal || !items.length) return;
+
+  function openModal(item) {
+    modalImg.src = item.dataset.img;
+    modalImg.alt = item.dataset.name;
+    modalCaption.textContent = item.dataset.name;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  items.forEach(function (item) {
+    item.addEventListener('click', function () { openModal(item); });
+  });
+
+  backdrop.addEventListener('click', closeModal);
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+
+// ── Blog Pagination ──────────────────────────────────────────────
+(function () {
+  var buttons = document.querySelectorAll('.blog-page-btn');
+  var pages = document.querySelectorAll('.blog-page');
+  var pagination = document.querySelector('.blog-pagination');
+  if (!buttons.length) return;
+
+  // Tək səhifə varsa pagination-u gizlədirik (10+ yazı olanda avtomatik görünəcək)
+  if (pagination) pagination.style.display = pages.length > 1 ? '' : 'none';
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var num = btn.dataset.pageNum;
+      pages.forEach(function (p) { p.style.display = p.dataset.blogPage === num ? '' : 'none'; });
+      buttons.forEach(function (b) { b.classList.toggle('active', b === btn); });
+    });
   });
 })();
 
@@ -515,6 +1489,8 @@ body.light {
 (function () {
   var tabs = document.querySelectorAll('.nav-tab');
   var sections = document.querySelectorAll('.page-section');
+
+  var backBtn = document.querySelector('.back-btn');
 
   function showPage(tab) {
     sections.forEach(function(s) { s.style.display = 'none'; });
@@ -524,6 +1500,13 @@ body.light {
     tabs.forEach(function(t) {
       if (t.dataset.tab === tab) t.classList.add('active');
     });
+    if (backBtn) {
+      var isDetail = tab.indexOf('post-') === 0 || tab.indexOf('project-') === 0;
+      backBtn.style.display = isDetail ? '' : 'none';
+      backBtn.setAttribute('href', tab.indexOf('project-') === 0 ? '#projects' : '#blogs');
+      backBtn.setAttribute('data-tab', tab.indexOf('project-') === 0 ? 'projects' : 'blogs');
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
   tabs.forEach(function(t) {
