@@ -832,6 +832,8 @@ nav {
 
 .post-hero img {
     width: 100%;
+    max-height: 620px;
+    object-fit: cover;
     display: block;
 }
 
@@ -901,7 +903,8 @@ nav {
     .site { padding: 0 1.1rem; }
     .item-row { grid-template-columns: 80px 1fr; gap: 1rem; }
     .skills-category { grid-template-columns: 1fr; gap: 0.5rem; padding-bottom: 1rem; }
-    .nav-links li a { padding: 10px 6px; font-size: 12.5px; }
+    .nav-links { padding: 0; width: 100%; justify-content: space-between; }
+    .nav-links li a { padding: 10px 4px; font-size: 12px; }
     .site-name { font-size: 1.5rem; }
     .avatar { width: 96px; height: 96px; }
     .diploma-item { width: calc(50% - 0.75rem); }
@@ -936,7 +939,7 @@ nav {
         <li><a href="#home" class="active nav-tab" data-tab="home">Haqqımda</a></li>
         <li><a href="#projects" class="nav-tab" data-tab="projects">Portfolio</a></li>
         <li><a href="#blogs" class="nav-tab" data-tab="blogs">Bloglar</a></li>
-        <li><a href="#photography" class="nav-tab" data-tab="photography">Fotoqrafiya</a></li>
+        <li><a href="#photography" class="nav-tab" data-tab="photography">Həvəskar Fotolar</a></li>
         <li><a href="#contact" class="nav-tab" data-tab="contact">Əlaqə</a></li>
       </ul>
     </div>
@@ -1112,44 +1115,12 @@ nav {
     <section id="blogs" class="page-section" style="display:none;">
       <div class="blog-grid fade-in">
         <div class="blog-page" data-blog-page="1">
-          <a href="#post-1" class="blog-card blog-card--lg nav-tab" data-tab="post-1" data-tag="Səyahət">
+          <a href="#post-1" class="blog-card blog-card--lg nav-tab" data-tab="post-1">
             <div class="blog-card-media">
-              <img src="https://granitas.az/wp-content/uploads/2021/02/laplandiya.jpg" alt="" loading="lazy">
+              <img src="./blog/crocodile-watch-strap.jpg" alt="Timsah dərisi stilli qırmızı saat qayışı" loading="lazy">
             </div>
             <div class="blog-card-overlay">
-              <h3 class="blog-card-title">Finlandiyanın ən şimal hissəsi olan Laplandiya, müxtəlif rəng çalarları ilə dolu sehrli arktik bölgə</h3>
-            </div>
-          </a>
-          <a href="#post-2" class="blog-card nav-tab" data-tab="post-2" data-tag="Maraqlı">
-            <div class="blog-card-media">
-              <img src="https://cdn.pixabay.com/photo/2023/09/11/15/54/ai-generated-8247155_1280.jpg" alt="" loading="lazy">
-            </div>
-            <div class="blog-card-overlay">
-              <h3 class="blog-card-title">The Creation of Yoda's Lightsaber</h3>
-            </div>
-          </a>
-          <a href="#post-3" class="blog-card nav-tab" data-tab="post-3" data-tag="Yumor">
-            <div class="blog-card-media">
-              <img src="https://images.unsplash.com/photo-1780519682021-745dd2d59584?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
-            </div>
-            <div class="blog-card-overlay">
-              <h3 class="blog-card-title">How I Convinced NASA the Moon Is Made of Cheese</h3>
-            </div>
-          </a>
-          <a href="#post-4" class="blog-card nav-tab" data-tab="post-4" data-tag="Təbiət">
-            <div class="blog-card-media">
-              <img src="https://images.unsplash.com/photo-1780519662401-23f3922dfb79?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
-            </div>
-            <div class="blog-card-overlay">
-              <h3 class="blog-card-title">Why Trees Judge You When You're Not Looking</h3>
-            </div>
-          </a>
-          <a href="#post-5" class="blog-card nav-tab" data-tab="post-5" data-tag="Sirr">
-            <div class="blog-card-media">
-              <img src="https://images.unsplash.com/photo-1780519669591-1fee2d735b30?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" loading="lazy">
-            </div>
-            <div class="blog-card-overlay">
-              <h3 class="blog-card-title">The Secret Underground Elevator to Atlantis</h3>
+              <h3 class="blog-card-title">Timsah dərisi stilli qadın qol saatı qayışları</h3>
             </div>
           </a>
         </div>
@@ -1163,109 +1134,30 @@ nav {
     <!-- BLOG POST 1 -->
     <section id="post-1" class="page-section" style="display:none;">
       <div class="post-wrap fade-in">
-        <p class="post-eyebrow">Səyahət</p>
-        <h1 class="post-title">Finlandiyanın ən şimal hissəsi olan Laplandiya, müxtəlif rəng çalarları ilə dolu sehrli arktik bölgə</h1>
-        <p class="post-byline">Ziya Mammadov · 26 Sentyabr 2025</p>
+        <p class="post-eyebrow" lang="en">Leather Crafting</p>
+        <h1 class="post-title">Timsah dərisi stilli qadın qol saatı qayışları</h1>
+        <p class="post-byline">Ziya Mammadov · 25 Sentyabr 2026</p>
         <div class="post-hero">
-          <img src="https://granitas.az/wp-content/uploads/2021/02/laplandiya.jpg" alt="">
+          <img src="./blog/crocodile-watch-strap.jpg" alt="Ağıllı saatın yanında timsah dərisi stilli qırmızı qayış">
         </div>
         <p class="body-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
+          Bu yazıda qadın qol saatları üçün hazırladığım timsah dərisi stilli qayışların material seçimi, konstruksiyası və tikiş texnikası haqqında məlumat verirəm. Məqsəd standart silikon qayışı həm estetik, həm də funksional baxımdan daha keyfiyyətli alternativlə əvəz etmək idi.
         </p>
+        <h2 class="post-subheading">Üst qat</h2>
         <p class="body-text">
-          Nunc faucibus ex eros, ac ultricies tellus interdum quis. Nulla facilisi. Aliquam convallis risus ut metus fermentum iuctorlis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+          Qayışın üz hissəsində timsah dərisi teksturalı süni dəridən istifadə olunub. Bu material təbii ekzotik dəri görünüşünü təmin edir, eyni zamanda daha əlçatan və qulluğu asandır. Tünd qırmızı rəng və dərin tekstura qayışa fərqli görünüş verir.
         </p>
-        <h2 class="post-subheading">Rəng çalarları</h2>
+        <h2 class="post-subheading">Alt qat</h2>
         <p class="body-text">
-          Etiam fringilla finibus sagittis. In pulvinar commodo magna, ac auctor massa efficitur nec. Quisque tristique scelerisfacilisis. Phasellus id ligula sed urna maximus elementum id tellus.
+          Biləklə təmasda olan alt hissədə təbii inək dərisi istifadə olunub. Bu seçim həm davamlılığı, həm də gündəlik istifadədə rahatlığı təmin edir: təbii dəri hava keçirir, zamanla yumşalır və biləyin formasına uyğunlaşır.
         </p>
-        <blockquote class="post-quote">
-          "Necə qərar vermək lazımdır — nə olduğuna yox, kim olduğuna baxaraq."
-          <cite>— Laplandiya sakinləri</cite>
-        </blockquote>
+        <h2 class="post-subheading">Tikiş</h2>
         <p class="body-text">
-          Mauris fringilla, metus sit amet ultrices fringilla, elit mi tempor dui, sit amet scelerisque metus quam nec diam. Stempus turpis. Sed ac placerat risus. Vestibulum vitae pretium libero.
+          Qatlar açıq qum rəngli mumlu sapla birləşdirilib. Tikişlər əl işçiliyi estetikasında bərkidilib, bu da həm möhkəmliyi artırır, həm də hər qayışı unikal edir. Mumlu sap adi sapla müqayisədə nəmə qarşı daha davamlıdır.
         </p>
-      </div>
-    </section>
-
-    <!-- BLOG POST 2 -->
-    <section id="post-2" class="page-section" style="display:none;">
-      <div class="post-wrap fade-in">
-        <p class="post-eyebrow">Maraqlı</p>
-        <h1 class="post-title">The Creation of Yoda's Lightsaber</h1>
-        <p class="post-byline">Ziya Mammadov · 12 Avqust 2025</p>
-        <div class="post-hero">
-          <img src="https://cdn.pixabay.com/photo/2023/09/11/15/54/ai-generated-8247155_1280.jpg" alt="">
-        </div>
+        <h2 class="post-subheading">Dizayn</h2>
         <p class="body-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
-        </p>
-        <!-- Video əlavə etmək üçün: <div class="post-image"><video src="..." controls></video></div> -->
-        <p class="body-text">
-          Nunc faucibus ex eros, ac ultricies tellus interdum quis. Nulla facilisi. Aliquam convallis risus ut metus fermentum iuctorlis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        </p>
-      </div>
-    </section>
-
-    <!-- BLOG POST 3 (hero şəkli yoxdur — nümunə) -->
-    <section id="post-3" class="page-section" style="display:none;">
-      <div class="post-wrap fade-in">
-        <p class="post-eyebrow">Yumor</p>
-        <h1 class="post-title">How I Convinced NASA the Moon Is Made of Cheese</h1>
-        <p class="post-byline">Ziya Mammadov · 3 İyul 2025</p>
-        <p class="body-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
-        </p>
-        <figure class="post-image">
-          <img src="https://images.unsplash.com/photo-1780519682021-745dd2d59584?q=80&w=1966&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-          <figcaption>Sübut №1</figcaption>
-        </figure>
-        <p class="body-text">
-          Etiam fringilla finibus sagittis. In pulvinar commodo magna, ac auctor massa efficitur nec. Quisque tristique scelerisfacilisis. Phasellus id ligula sed urna maximus elementum id tellus.
-        </p>
-      </div>
-    </section>
-
-    <!-- BLOG POST 4 -->
-    <section id="post-4" class="page-section" style="display:none;">
-      <div class="post-wrap fade-in">
-        <p class="post-eyebrow">Təbiət</p>
-        <h1 class="post-title">Why Trees Judge You When You're Not Looking</h1>
-        <p class="post-byline">Ziya Mammadov · 19 May 2025</p>
-        <div class="post-hero">
-          <img src="https://images.unsplash.com/photo-1780519662401-23f3922dfb79?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-        </div>
-        <p class="body-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
-        </p>
-        <blockquote class="post-quote">
-          "Ağaclar heç vaxt tələsmir, amma hər şeyi görür."
-        </blockquote>
-        <p class="body-text">
-          Nunc faucibus ex eros, ac ultricies tellus interdum quis. Nulla facilisi. Aliquam convallis risus ut metus fermentum iuctorlis natoque penatibus et magnis dis parturient montes.
-        </p>
-      </div>
-    </section>
-
-    <!-- BLOG POST 5 -->
-    <section id="post-5" class="page-section" style="display:none;">
-      <div class="post-wrap fade-in">
-        <p class="post-eyebrow">Sirr</p>
-        <h1 class="post-title">The Secret Underground Elevator to Atlantis</h1>
-        <p class="post-byline">Ziya Mammadov · 8 Mart 2025</p>
-        <div class="post-hero">
-          <img src="https://images.unsplash.com/photo-1780519669591-1fee2d735b30?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-        </div>
-        <p class="body-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vix at aquod omnium fuisset, pute ornatus asuevert hiseat, quod laudet. Mucrecusa bore tarue simil maque, velit elitr, est primis labitur.
-        </p>
-        <h2 class="post-subheading">Kəşf</h2>
-        <figure class="post-image">
-          <img src="https://images.unsplash.com/photo-1783388798628-32e491b3f106?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-        </figure>
-        <p class="body-text">
-          Etiam fringilla finibus sagittis. In pulvinar commodo magna, ac auctor massa efficitur nec. Quisque tristique scelerisfacilisis. Phasellus id ligula sed urna maximus elementum id tellus.
+          Açıq rəngli sap tünd tekstura üzərində kontrast yaradır və dərinin strukturunu vurğulayır. Bu kontrast aksessuara vizual dinamika və daha premium görünüş qazandırır.
         </p>
       </div>
     </section>
